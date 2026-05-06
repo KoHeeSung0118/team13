@@ -73,7 +73,7 @@ const quizzes = {
     questions: [
       {
         type: "text",
-        q: "행수쌤의 이름은?",
+        q: "행수쌤의 이름은?(ㅇㅎㅎ)",
         answers: ["이효현"]
       },
       {
@@ -96,16 +96,16 @@ const quizzes = {
     questions: [
       {
         type: "text",
-        q: "주식을 몰래 사면?",
+        q: "주식을 몰래 사면?(ㅅㅋㄹ ㅈㅈ)",
         answers: ["시크릿 주주", "시크릿주주"]
       },
       {
         type: "text",
-        q: "사회가 망하면?",
+        q: "사회가 망하면?(ㅅㅎㄱ ㅂㄷ)",
         answers: ["사회가 부도", "사회가부도"]
       },
       {
-        type: "text",
+        type: "text(이건 초성 안줘도 알지?)",
         q: "제제쌤의 이름은?",
         answers: ["이민주"]
       }
@@ -261,8 +261,13 @@ function clearQuiz(type) {
 }
 
 function updateCodeBox() {
-  document.getElementById("codeBox").innerText =
-    collected.length ? collected.join(" ") : "없음";
+  const order = ["8", "2", "7", "4", "1", "9"];
+
+  const display = order.map(num => {
+    return collected.includes(num) ? num : "_";
+  });
+
+  document.getElementById("codeBox").innerText = display.join(" ");
 }
 
 function checkFinalCode() {
