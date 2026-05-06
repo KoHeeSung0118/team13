@@ -11,65 +11,6 @@ body {
   overflow: hidden;
 }
 
-.top-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 72px;
-  padding: 0 28px;
-  background: rgba(0, 0, 0, 0.65);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 20;
-  border-bottom: 1px solid rgba(255,255,255,0.15);
-}
-
-.top-bar h1 {
-  font-size: 22px;
-}
-
-.inventory {
-  color: #93c5fd;
-}
-
-.scene {
-  display: none;
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  padding-top: 72px;
-}
-
-.scene.active {
-  display: block;
-}
-
-.story-card {
-  width: 460px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid #334155;
-  border-radius: 20px;
-  padding: 32px;
-  line-height: 1.8;
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 40px rgba(0,0,0,0.7);
-}
-
-.story-card h2 {
-  color: #93c5fd;
-  margin-bottom: 18px;
-}
-
-.warning {
-  color: #fca5a5;
-  font-weight: bold;
-}
-
 button {
   border: none;
   cursor: pointer;
@@ -79,11 +20,12 @@ button {
   background: #2563eb;
   color: white;
   font-size: 15px;
+  transition: 0.2s;
 }
 
 button:hover {
   background: #3b82f6;
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 input {
@@ -96,246 +38,44 @@ input {
   text-align: center;
 }
 
-.place-title {
-  position: absolute;
-  top: 100px;
-  left: 40px;
-  font-size: 30px;
-  font-weight: bold;
-  text-shadow: 0 0 12px black;
+/* 상단바 */
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  padding: 0 28px;
+  background: rgba(0, 0, 0, 0.68);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 40;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
 }
 
-.object {
-  position: absolute;
-  background: rgba(255,255,255,0.12);
-  border: 2px solid rgba(255,255,255,0.25);
-  backdrop-filter: blur(4px);
-}
-
-.move {
-  position: absolute;
-  bottom: 34px;
-}
-
-.move.left {
-  left: 34px;
-}
-
-.move.right {
-  right: 34px;
-}
-
-/* 배경 */
-
-.gate-bg {
-  background:
-    linear-gradient(180deg, #0f172a 0 55%, #111827 55% 100%);
-}
-
-.classroom-bg {
-  background:
-    linear-gradient(#1e293b 0 58%, #3b2f25 58% 100%);
-}
-
-.auditorium-bg {
-  background:
-    radial-gradient(circle at center, #3b1f1f, #020617);
-}
-
-.cafeteria-bg {
-  background:
-    linear-gradient(180deg, #334155 0 55%, #78350f 55% 100%);
-}
-
-.roof-bg {
-  background:
-    linear-gradient(180deg, #0f172a, #000);
-}
-
-.gym-bg {
-  background:
-    radial-gradient(circle at center, #1e3a8a, #020617);
-}
-
-/* 오브젝트 위치 */
-
-.board {
-  top: 170px;
-  left: 36%;
-  width: 340px;
-  height: 130px;
-  background: #14532d;
-  border: 10px solid #5b4636;
-  font-size: 24px;
-}
-
-.locker {
-  top: 230px;
-  right: 140px;
-  width: 130px;
-  height: 280px;
-}
-
-.desk {
-  bottom: 150px;
-  left: 42%;
-  width: 220px;
-  height: 110px;
-  background: #7c4f2c;
-}
-
-.chair {
-  bottom: 160px;
-  left: 35%;
-  width: 180px;
-  height: 120px;
-}
-
-.stage {
-  top: 150px;
-  left: 35%;
-  width: 380px;
-  height: 170px;
-  background: #450a0a;
-}
-
-.menu {
-  top: 160px;
-  left: 40%;
-  width: 300px;
-  height: 180px;
-  background: #111827;
-}
-
-.tray {
-  bottom: 150px;
-  left: 45%;
-  width: 180px;
-  height: 100px;
-  background: #94a3b8;
-  color: black;
-}
-
-.math {
-  top: 220px;
-  left: 25%;
-  width: 250px;
-  height: 150px;
-}
-
-.word {
-  top: 220px;
-  right: 25%;
-  width: 250px;
-  height: 150px;
-}
-
-.ball {
-  top: 230px;
-  left: 42%;
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
+.top-bar h1 {
   font-size: 22px;
 }
 
-/* 팝업 */
-
-.modal-bg {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  justify-content: center;
-  align-items: center;
-  z-index: 50;
-}
-
-.modal {
-  width: 480px;
-  max-height: 80vh;
-  overflow-y: auto;
-  background: #111827;
-  border: 1px solid #475569;
-  border-radius: 20px;
-  padding: 28px;
-  line-height: 1.7;
-  box-shadow: 0 0 50px rgba(0,0,0,0.85);
-}
-
-.modal h2 {
+.inventory {
   color: #93c5fd;
-  margin-bottom: 14px;
 }
 
-.quiz-btn {
-  width: 100%;
-  display: block;
-  background: #1e293b;
-  margin-top: 10px;
-  text-align: left;
-}
-
-.quiz-btn:hover {
-  background: #334155;
-}
-
-.correct {
-  color: #86efac;
-  font-weight: bold;
-}
-
-.wrong {
-  color: #fca5a5;
-  font-weight: bold;
-}
-/* =========================
-   게임 퀄리티 업그레이드
-========================= */
-
-body {
-  background: #020617;
-}
-
-.scene::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at center, transparent 35%, rgba(0,0,0,0.65) 100%);
-  z-index: 1;
-}
-
-.scene > * {
-  z-index: 2;
-}
-
-.top-bar {
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
-}
-
-.place-title {
-  background: rgba(0,0,0,0.45);
-  padding: 14px 22px;
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.18);
-  backdrop-filter: blur(8px);
-}
-
-/* 지도 패널 */
+/* 지도 */
 
 .map-panel {
   position: fixed;
   left: 24px;
   top: 95px;
-  width: 160px;
+  width: 190px;
   padding: 14px;
   background: rgba(15, 23, 42, 0.78);
   border: 1px solid rgba(147, 197, 253, 0.35);
   border-radius: 18px;
-  z-index: 30;
+  z-index: 35;
   backdrop-filter: blur(12px);
   box-shadow: 0 0 30px rgba(59,130,246,0.18);
 }
@@ -358,123 +98,70 @@ body {
   font-size: 13px;
 }
 
-.map-panel button:hover {
-  background: #2563eb;
-  box-shadow: 0 0 14px rgba(96,165,250,0.55);
-}
-
 .map-panel button.active-map {
   background: #3b82f6;
   border-color: #bfdbfe;
   box-shadow: 0 0 18px rgba(96,165,250,0.8);
 }
 
-/* 오브젝트 게임 느낌 */
+/* 공통 씬 */
 
-.object {
-  box-shadow:
-    0 0 18px rgba(255,255,255,0.12),
-    inset 0 0 18px rgba(255,255,255,0.04);
-  transition: 0.2s;
+.scene {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  padding-top: 72px;
 }
 
-.object:hover {
-  transform: scale(1.05);
-  filter: brightness(1.25);
-  box-shadow:
-    0 0 25px rgba(147,197,253,0.65),
-    inset 0 0 20px rgba(255,255,255,0.08);
+.scene.active {
+  display: block;
 }
 
-/* 이동 버튼 */
-
-.move {
-  background: rgba(37, 99, 235, 0.9);
-  box-shadow: 0 0 18px rgba(37,99,235,0.45);
-}
-
-/* 팝업 개선 */
-
-.modal {
-  background:
-    linear-gradient(180deg, #111827, #020617);
-  border: 1px solid rgba(147,197,253,0.35);
-  box-shadow:
-    0 0 50px rgba(59,130,246,0.25),
-    0 0 90px rgba(0,0,0,0.9);
-}
-
-.modal h2 {
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  padding-bottom: 10px;
-}
-
-/* 장소별 디테일 */
-
-.gate-bg {
-  background:
-    linear-gradient(180deg, rgba(15,23,42,0.8), rgba(0,0,0,0.95)),
-    repeating-linear-gradient(
-      90deg,
-      #111827 0 30px,
-      #1f2937 30px 35px
-    );
-}
-
-.classroom-bg {
-  background:
-    linear-gradient(#1e293b 0 58%, #3b2f25 58% 100%);
-}
-
-.classroom-bg::before {
+.scene::after {
   content: "";
   position: absolute;
-  left: 18%;
-  top: 120px;
-  width: 120px;
-  height: 170px;
-  background:
-    linear-gradient(#020617, #0f172a);
-  border: 8px solid #475569;
-  box-shadow: 0 0 25px rgba(255,255,255,0.08);
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 48%, rgba(0,0,0,0.28) 100%);
+  z-index: 1;
 }
 
-.auditorium-bg {
-  background:
-    radial-gradient(circle at center, rgba(127,29,29,0.8), transparent 35%),
-    linear-gradient(180deg, #1f1111, #020617);
+.scene > * {
+  z-index: 2;
 }
 
-.cafeteria-bg {
-  background:
-    linear-gradient(180deg, #334155 0 55%, #78350f 55% 100%);
-}
-
-.cafeteria-bg::before {
-  content: "오늘의 메뉴";
+.place-title {
   position: absolute;
-  top: 120px;
-  right: 120px;
-  padding: 20px 30px;
-  background: #111827;
-  border: 4px solid #94a3b8;
-  color: #facc15;
+  top: 115px;
+  left: 250px;
+  font-size: 30px;
   font-weight: bold;
+  text-shadow: 0 0 12px black;
+  background: rgba(0,0,0,0.45);
+  padding: 14px 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.18);
+  backdrop-filter: blur(8px);
 }
 
-.roof-bg {
-  background:
-    radial-gradient(circle at top, rgba(59,130,246,0.35), transparent 35%),
-    linear-gradient(180deg, #0f172a, #000);
+.move {
+  position: absolute;
+  bottom: 28px;
+  background: rgba(37, 99, 235, 0.9);
+  box-shadow: 0 0 18px rgba(37,99,235,0.45);
+  z-index: 20;
 }
 
-.gym-bg {
-  background:
-    radial-gradient(circle at center, rgba(37,99,235,0.4), transparent 35%),
-    linear-gradient(180deg, #172554, #020617);
+.move.left {
+  left: 260px;
 }
 
-/* 첫 시작 화면 */
+.move.right {
+  right: 34px;
+}
+
+/* 인트로 */
 
 .intro-bg {
   background-image: url("../images/school-bg.jpg");
@@ -486,12 +173,7 @@ body {
 .intro-overlay {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0.25),
-      rgba(0, 0, 0, 0.85)
-    );
+  background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.85));
   z-index: 1;
 }
 
@@ -523,7 +205,6 @@ body {
   font-size: 46px;
   line-height: 1.18;
   margin-bottom: 24px;
-  text-shadow: 0 0 20px rgba(0,0,0,0.8);
 }
 
 .intro-text {
@@ -540,7 +221,462 @@ body {
   box-shadow: 0 0 25px rgba(96,165,250,0.55);
 }
 
-.start-btn:hover {
-  transform: scale(1.07);
-  box-shadow: 0 0 38px rgba(129,140,248,0.85);
+/* 정문 */
+
+.gate-bg {
+  background:
+    linear-gradient(180deg, rgba(15,23,42,0.8), rgba(0,0,0,0.95)),
+    repeating-linear-gradient(90deg, #111827 0 30px, #1f2937 30px 35px);
+}
+
+.story-card {
+  width: 460px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid #334155;
+  border-radius: 20px;
+  padding: 32px;
+  line-height: 1.8;
+  position: absolute;
+  top: 52%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 40px rgba(0,0,0,0.7);
+}
+
+.story-card h2 {
+  color: #93c5fd;
+  margin-bottom: 18px;
+}
+
+.warning {
+  color: #fca5a5;
+  font-weight: bold;
+}
+
+/* 교실 */
+
+.classroom-bg {
+  background: linear-gradient(#dbeafe 0 58%, #8b5a34 58% 100%);
+}
+
+.class-board {
+  position: absolute;
+  left: 50%;
+  top: 225px;
+  transform: translateX(-50%);
+  width: 420px;
+  height: 150px;
+  background: #14532d;
+  border: 10px solid #5b4636;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  box-shadow: 14px 16px 0 rgba(0,0,0,0.25);
+}
+
+.class-desk {
+  position: absolute;
+  left: 50%;
+  bottom: 175px;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 120px;
+  background: linear-gradient(135deg, #9a6537, #5c351d);
+  box-shadow: 18px 22px 0 rgba(0,0,0,0.32), inset -16px -16px 0 rgba(0,0,0,0.16);
+}
+
+.class-locker {
+  position: absolute;
+  right: 170px;
+  top: 300px;
+  width: 150px;
+  height: 320px;
+  background: linear-gradient(90deg, #64748b, #334155);
+  box-shadow: 16px 18px 0 rgba(0,0,0,0.32);
+}
+
+.class-locker::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: #1e293b;
+}
+
+.class-mirror {
+  position: absolute;
+  left: 300px;
+  top: 270px;
+  width: 100px;
+  height: 230px;
+  background: linear-gradient(180deg, #dbeafe, #94a3b8);
+  border: 8px solid #475569;
+  border-radius: 60px 60px 12px 12px;
+  box-shadow: 12px 14px 0 rgba(0,0,0,0.28);
+  color: transparent;
+}
+
+.class-door {
+  position: absolute;
+  right: 80px;
+  top: 210px;
+  width: 140px;
+  height: 340px;
+  background: linear-gradient(90deg, #6b3f22, #3b2415);
+  border: 8px solid #1f130d;
+  box-shadow: 16px 18px 0 rgba(0,0,0,0.32);
+  padding: 0;
+}
+
+.class-door::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: 160px;
+  width: 16px;
+  height: 16px;
+  background: #facc15;
+  border-radius: 50%;
+}
+
+/* 강당 */
+
+.auditorium-bg {
+  background: linear-gradient(180deg, #3b0a0a 0 42%, #111827 42% 100%);
+}
+
+.stage-screen {
+  position: absolute;
+  top: 115px;
+  left: 54%;
+  transform: translateX(-50%);
+  width: 460px;
+  height: 220px;
+  background: #f8fafc;
+  color: #111827;
+  border: 14px solid #1f2937;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  font-weight: bold;
+  box-shadow: 0 20px 0 rgba(0,0,0,0.35);
+  cursor: pointer;
+}
+
+.audience-seats {
+  position: absolute;
+  bottom: 90px;
+  left: 54%;
+  transform: translateX(-50%);
+  width: 720px;
+  height: 260px;
+  cursor: pointer;
+}
+
+.audience-seats div {
+  height: 45px;
+  margin-bottom: 18px;
+  background: linear-gradient(180deg, #991b1b, #450a0a);
+  border-radius: 30px 30px 8px 8px;
+  box-shadow: 0 14px 0 rgba(0,0,0,0.35);
+}
+
+.audience-seats div:nth-child(1) { width: 460px; margin-left: 130px; }
+.audience-seats div:nth-child(2) { width: 540px; margin-left: 90px; }
+.audience-seats div:nth-child(3) { width: 620px; margin-left: 50px; }
+.audience-seats div:nth-child(4) { width: 720px; margin-left: 0; }
+
+/* 급식실 */
+
+.cafeteria-bg {
+  background: linear-gradient(180deg, #f8fafc 0 55%, #d1d5db 55% 100%);
+}
+
+.cafeteria-bg::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 55%;
+  width: 100%;
+  height: 5px;
+  background: rgba(0,0,0,0.12);
+}
+
+.menu-paper {
+  position: absolute;
+  top: 120px;
+  right: 110px;
+  width: 240px;
+  min-height: 260px;
+  background: white;
+  color: #111827;
+  padding: 24px;
+  border-radius: 4px;
+  box-shadow: 10px 12px 0 rgba(0,0,0,0.18);
+  cursor: pointer;
+}
+
+.menu-paper h3 {
+  text-align: center;
+  margin-bottom: 18px;
+  border-bottom: 2px solid #111827;
+  padding-bottom: 8px;
+}
+
+.menu-paper p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.food-tray {
+  position: absolute;
+  left: 50%;
+  bottom: 120px;
+  transform: translateX(-50%);
+  width: 360px;
+  height: 220px;
+  background: #cbd5e1;
+  border-radius: 34px;
+  border: 8px solid #94a3b8;
+  box-shadow: 0 24px 0 #64748b;
+  cursor: pointer;
+}
+
+.food-tray div {
+  position: absolute;
+  background: #e5e7eb;
+  border: 5px solid #94a3b8;
+}
+
+.food-tray div:nth-child(1) {
+  width: 120px;
+  height: 120px;
+  left: 28px;
+  top: 40px;
+  border-radius: 50%;
+}
+
+.food-tray div:nth-child(2) {
+  width: 150px;
+  height: 70px;
+  right: 32px;
+  top: 35px;
+  border-radius: 24px;
+}
+
+.food-tray div:nth-child(3) {
+  width: 150px;
+  height: 70px;
+  right: 32px;
+  bottom: 35px;
+  border-radius: 24px;
+}
+
+/* 복도 */
+
+.hallway-teacher-bg {
+  background: repeating-linear-gradient(90deg, #e5e7eb 0 80px, #d1d5db 80px 160px);
+}
+
+.hallway-teacher-bg::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 42%;
+  background: linear-gradient(180deg, #cbd5e1, #64748b);
+}
+
+.teacher {
+  position: absolute;
+  top: 210px;
+  width: 260px;
+  text-align: center;
+}
+
+.teacher-left {
+  left: 32%;
+}
+
+.teacher-right {
+  right: 16%;
+}
+
+.face {
+  font-size: 92px;
+  margin-bottom: 12px;
+}
+
+.speech {
+  position: relative;
+  background: white;
+  color: #111827;
+  padding: 14px 18px;
+  border-radius: 18px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 0 rgba(0,0,0,0.18);
+  font-weight: bold;
+}
+
+.speech::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  border-width: 12px 10px 0 10px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* 운동장 */
+
+.playground-bg {
+  background: linear-gradient(180deg, #93c5fd 0 38%, #22c55e 38% 100%);
+}
+
+.playground-bg::before {
+  content: "";
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: repeating-linear-gradient(90deg, transparent 0 120px, rgba(255,255,255,0.5) 120px 124px);
+}
+
+.pe-teacher {
+  position: absolute;
+  top: 210px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.cone {
+  position: absolute;
+  bottom: 120px;
+  width: 0;
+  height: 0;
+  border-left: 34px solid transparent;
+  border-right: 34px solid transparent;
+  border-bottom: 100px solid #ef4444;
+  filter: drop-shadow(0 10px 0 rgba(0,0,0,0.25));
+}
+
+.cone::after {
+  content: "";
+  position: absolute;
+  left: -42px;
+  top: 100px;
+  width: 84px;
+  height: 18px;
+  background: #7f1d1d;
+}
+
+.cone1 { left: 20%; }
+.cone2 { left: 35%; }
+.cone3 { right: 22%; }
+
+/* 팝업 */
+
+.modal-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  z-index: 60;
+}
+
+.modal {
+  width: 480px;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #111827, #020617);
+  border: 1px solid rgba(147,197,253,0.35);
+  border-radius: 20px;
+  padding: 28px;
+  line-height: 1.7;
+  box-shadow: 0 0 50px rgba(59,130,246,0.25), 0 0 90px rgba(0,0,0,0.9);
+}
+
+.modal h2 {
+  color: #93c5fd;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  padding-bottom: 10px;
+}
+
+.quiz-btn {
+  width: 100%;
+  display: block;
+  background: #1e293b;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.quiz-btn:hover {
+  background: #334155;
+}
+
+.answer-input {
+  margin-top: 12px;
+}
+
+.correct {
+  color: #86efac;
+  font-weight: bold;
+}
+
+.wrong {
+  color: #fca5a5;
+  font-weight: bold;
+}
+
+/* 교실 오브젝트 겹침/호버 이동 문제 수정 */
+
+.class-board:hover,
+.class-desk:hover {
+  transform: translateX(-50%) scale(1.03);
+}
+
+.class-mirror:hover,
+.class-locker:hover,
+.class-door:hover {
+  transform: scale(1.03);
+}
+
+/* 교실 오브젝트 위치 재배치 */
+
+.class-mirror {
+  left: 270px;
+  top: 270px;
+}
+
+.class-board {
+  left: 50%;
+  top: 220px;
+}
+
+.class-desk {
+  left: 50%;
+  bottom: 155px;
+}
+
+.class-locker {
+  right: 270px;
+  top: 315px;
+  width: 140px;
+  height: 280px;
+}
+
+.class-door {
+  right: 70px;
+  top: 250px;
+  width: 130px;
+  height: 310px;
 }

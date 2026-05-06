@@ -1,150 +1,148 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>졸업했는데 왜 다시 디미고냐</title>
-    <link rel="stylesheet" href="./css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>졸업했는데 왜 다시 디미고냐</title>
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
-
 <body>
 
-    <header class="top-bar">
-        <h1>졸업했는데 왜 다시 디미고냐</h1>
-        <div class="inventory">🎒 획득한 숫자: <span id="codeBox">없음</span></div>
-    </header>
+<header class="top-bar">
+  <h1>졸업했는데 왜 다시 디미고냐</h1>
+  <div class="inventory">🔐 획득한 숫자: <span id="codeBox">없음</span></div>
+</header>
 
-    <main id="game">
-        <section id="intro" class="scene active intro-bg">
-            <div class="intro-overlay"></div>
-
-            <div class="intro-box">
-                <p class="intro-subtitle">DIMI ESCAPE GAME</p>
-
-                <h2>졸업했는데<br>왜 다시 디미고냐</h2>
-
-                <p class="intro-text">
-                    22기 졸업생 A는 눈을 떴다.<br>
-                    분명 졸업했는데, 다시 학교에 갇혀 있었다.
-                </p>
-
-                <button class="start-btn" onclick="goScene('gate')">
-                    게임 시작하기
-                </button>
-            </div>
-        </section>
-
-        <section id="gate" class="scene gate-bg">
-            <div class="story-card">
-                <h2>정문</h2>
-                <p>
-                    정문은 굳게 잠겨 있다.<br>
-                    자물쇠에는 6자리 비밀번호 입력창이 있다.
-                </p>
-                <p class="warning">“힌트는 학교 안에 있다.”</p>
-                <input id="finalInput" placeholder="6자리 비밀번호" />
-                <button onclick="checkFinalCode()">탈출 시도</button>
-                <button onclick="goScene('classroom')">신관 3-1 교실로 가기</button>
-            </div>
-        </section>
-
-        <section id="classroom" class="scene classroom-bg">
-            <div class="place-title">신관 3-1 교실</div>
-            <button class="object board" onclick="openQuiz('business')">칠판</button>
-            <button class="object locker"
-                onclick="openModal('사물함', '예전 교과서와 수행평가 프린트가 가득하다. 칠판 쪽에서 이상한 빛이 난다.')">사물함</button>
-            <button class="object desk" onclick="openModal('책상', '책상 위에는 졸업식 때 받은 꽃잎 하나가 말라붙어 있다.')">책상</button>
-            <button class="move left" onclick="goScene('gate')">← 정문</button>
-            <button class="move right" onclick="goScene('auditorium')">강당 →</button>
-        </section>
-
-        <section id="auditorium" class="scene auditorium-bg">
-            <div class="place-title">강당</div>
-            <button class="object chair" onclick="openQuiz('auditorium')">의자 밑 쪽지</button>
-            <button class="object stage"
-                onclick="openModal('무대', '갑자기 교장쌤 훈화 영상이 켜졌다. 본능적으로 오래 있으면 안 될 것 같다.')">무대</button>
-            <button class="move left" onclick="goScene('classroom')">← 교실</button>
-            <button class="move right" onclick="goScene('cafeteria')">급식실 →</button>
-        </section>
-
-        <section id="cafeteria" class="scene cafeteria-bg">
-            <div class="place-title">급식실</div>
-
-            <div class="menu-paper" onclick="openQuiz('food')">
-                <h3>오늘의 메뉴</h3>
-                <p>돈까스</p>
-                <p>짜장면</p>
-                <p>로제마라떡볶이</p>
-                <p>요구르트</p>
-            </div>
-
-            <div class="food-tray" onclick="openModal('식판', '반짝이는 식판이다. 아직 따뜻한 급식 냄새가 난다.')">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
-            <button class="move left" onclick="goScene('auditorium')">← 강당</button>
-            <button class="move right" onclick="goScene('roof')">옥상 →</button>
-        </section>
-        <section id="roof" class="scene hallway-teacher-bg">
-            <div class="place-title">복도</div>
-
-            <div class="teacher teacher-left">
-                <div class="speech">행수~</div>
-                <div class="face">👩‍🏫</div>
-                <button onclick="openQuiz('math')">행수쌤의 수학문제</button>
-            </div>
-
-            <div class="teacher teacher-right">
-                <div class="speech">행복이란 무엇이라고 생각하시나요~!</div>
-                <div class="face">👨‍🏫</div>
-                <button onclick="openQuiz('word')">제제쌤의 초성문제</button>
-            </div>
-
-            <button class="move left" onclick="goScene('cafeteria')">← 급식실</button>
-            <button class="move right" onclick="goScene('gym')">운동장 →</button>
-        </section>
-
-        <section id="gym" class="scene playground-bg">
-            <div class="place-title">운동장</div>
-
-            <div class="pe-teacher">
-                <div class="speech">기초 체력이 심각하게 부족해!</div>
-                <div class="face">🏃‍♂️</div>
-                <button onclick="openQuiz('pe')">동영쌤의 체육 퀴즈</button>
-            </div>
-
-            <div class="cone cone1"></div>
-            <div class="cone cone2"></div>
-            <div class="cone cone3"></div>
-
-            <button class="move left" onclick="goScene('roof')">← 복도</button>
-            <button class="move right" onclick="goScene('gate')">정문으로 →</button>
-        </section>
-    </main>
-
-    <div id="modalBg" class="modal-bg">
-        <div class="modal">
-            <h2 id="modalTitle"></h2>
-            <p id="modalText"></p>
-            <div id="quizArea"></div>
-            <button onclick="closeModal()">닫기</button>
-        </div>
-    </div>
-
-    <script src="./js/script.js"></script>
-</body>
 <nav class="map-panel">
-    <div class="map-title">학교 지도</div>
-
-    <button onclick="goScene('gate')">정문</button>
-    <button onclick="goScene('classroom')">3-1 교실</button>
-    <button onclick="goScene('auditorium')">강당</button>
-    <button onclick="goScene('cafeteria')">급식실</button>
-    <button onclick="goScene('roof')">옥상</button>
-    <button onclick="goScene('gym')">체육관</button>
+  <div class="map-title">학교 지도</div>
+  <button onclick="goScene('gate')">정문</button>
+  <button onclick="goScene('classroom')">3-1 교실</button>
+  <button onclick="goScene('auditorium')">강당</button>
+  <button onclick="goScene('cafeteria')">급식실</button>
+  <button onclick="goScene('roof')">복도</button>
+  <button onclick="goScene('gym')">운동장</button>
 </nav>
 
+<main id="game">
+
+  <section id="intro" class="scene active intro-bg">
+    <div class="intro-overlay"></div>
+    <div class="intro-box">
+      <p class="intro-subtitle">DIMI ESCAPE GAME</p>
+      <h2>졸업했는데<br>왜 다시 디미고냐</h2>
+      <p class="intro-text">
+        22기 졸업생 A는 기숙사에서 눈을 떴다.<br>
+        분명 졸업했는데, 다시 학교에 갇혀 있었다.
+      </p>
+      <button class="start-btn" onclick="goScene('gate')">게임 시작하기</button>
+    </div>
+  </section>
+
+  <section id="gate" class="scene gate-bg">
+    <div class="story-card">
+      <h2>정문</h2>
+      <p>정문은 굳게 잠겨 있다.</p>
+      <p class="warning">“졸업생 인증 비밀번호 6자리를 입력하세요.”</p>
+      <input id="finalInput" placeholder="6자리 비밀번호" />
+      <button onclick="checkFinalCode()">탈출 시도</button>
+      <button onclick="goScene('classroom')">학교 안으로 돌아가기</button>
+    </div>
+  </section>
+
+  <section id="classroom" class="scene classroom-bg">
+    <div class="place-title">신관 3-1 교실</div>
+
+    <button class="class-board" onclick="openQuiz('business')">경제 퀴즈</button>
+    <button class="class-desk" onclick="openModal('책상', '책상 위에는 졸업식 때 받은 꽃잎 하나가 말라붙어 있다.')">책상</button>
+    <button class="class-locker" onclick="openModal('사물함', '예전 교과서와 수행평가 프린트가 가득하다.')">사물함</button>
+    <button class="class-mirror" onclick="openModal('거울', '거울 속의 나는 졸업생인데, 교복을 입고 있다.')">거울</button>
+    <button class="class-door" onclick="goScene('auditorium')"></button>
+
+    <button class="move left" onclick="goScene('gate')">← 정문</button>
+    <button class="move right" onclick="goScene('auditorium')">강당 →</button>
+  </section>
+
+  <section id="auditorium" class="scene auditorium-bg">
+    <div class="place-title">강당</div>
+
+    <div class="stage-screen" onclick="openModal('스크린', '교장쌤 훈화 영상이 재생된다.<br><br>“여러분, 집중하세요.”')">
+      교장쌤 훈화 영상
+    </div>
+
+    <div class="audience-seats" onclick="openQuiz('auditorium')">
+      <div></div><div></div><div></div><div></div>
+    </div>
+
+    <button class="move left" onclick="goScene('classroom')">← 교실</button>
+    <button class="move right" onclick="goScene('cafeteria')">급식실 →</button>
+  </section>
+
+  <section id="cafeteria" class="scene cafeteria-bg">
+    <div class="place-title">급식실</div>
+
+    <div class="menu-paper" onclick="openQuiz('food')">
+      <h3>오늘의 메뉴</h3>
+      <p>돈까스</p>
+      <p>짜장면</p>
+      <p>로제마라떡볶이</p>
+      <p>요구르트</p>
+    </div>
+
+    <div class="food-tray" onclick="openModal('식판', '반짝이는 식판이다. 아직 따뜻한 급식 냄새가 난다.')">
+      <div></div><div></div><div></div>
+    </div>
+
+    <button class="move left" onclick="goScene('auditorium')">← 강당</button>
+    <button class="move right" onclick="goScene('roof')">복도 →</button>
+  </section>
+
+  <section id="roof" class="scene hallway-teacher-bg">
+    <div class="place-title">복도</div>
+
+    <div class="teacher teacher-left">
+      <div class="speech">행수~</div>
+      <div class="face">👨‍🏫</div>
+      <button onclick="openQuiz('math')">행수쌤의 문제</button>
+    </div>
+
+    <div class="teacher teacher-right">
+      <div class="speech">행복이란 무엇이라고 생각하시나요~!</div>
+      <div class="face">👩‍🏫</div>
+      <button onclick="openQuiz('word')">제제쌤의 문제</button>
+    </div>
+
+    <button class="move left" onclick="goScene('cafeteria')">← 급식실</button>
+    <button class="move right" onclick="goScene('gym')">운동장 →</button>
+  </section>
+
+  <section id="gym" class="scene playground-bg">
+    <div class="place-title">운동장</div>
+
+    <div class="pe-teacher">
+      <div class="speech">기초 체력이 심각하게 부족해!</div>
+      <div class="face">🏃‍♂️</div>
+      <button onclick="openQuiz('pe')">동영쌤의 체육 퀴즈</button>
+    </div>
+
+    <div class="cone cone1"></div>
+    <div class="cone cone2"></div>
+    <div class="cone cone3"></div>
+
+    <button class="move left" onclick="goScene('roof')">← 복도</button>
+    <button class="move right" onclick="goScene('gate')">정문으로 →</button>
+  </section>
+
+</main>
+
+<div id="modalBg" class="modal-bg">
+  <div class="modal">
+    <h2 id="modalTitle"></h2>
+    <p id="modalText"></p>
+    <div id="quizArea"></div>
+    <button onclick="closeModal()">닫기</button>
+  </div>
+</div>
+
+<script src="./js/script.js"></script>
+</body>
 </html>
